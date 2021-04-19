@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <!-- <body onclick="openFullscreen();"> -->
+  <body>
+    <div class="clock">
+      <div class="hour">
+        <div class="hr" id="hr"></div>
+      </div>
+      <div class="min">
+        <div class="mn" id="mn"></div>
+      </div>
+      <div class="sec">
+        <div class="sc" id="sc"></div>
+      </div>
+    </div>
+    <h3 style="color: #fff; padding-left: 3rem; font-family: cursive">
+      The two most powerful warriors are patience & time.
+    </h3>
+    <div class="sign">
+      <!-- <span class="sign__word" style="padding-left: 4rem;">The two most powerful warriors are patience & time.</span> -->
+      <!-- <span class="sign__word">festival</span> -->
+      <!-- <span class="sign__word">today</span> -->
+    </div>
+
+    <a
+      class="link"
+      target="_blank"
+      style="font-family: cursive"
+      href="https://sathizh.netlify.app/"
+      >Developed by Sathizh.M &rarr;</a
+    >
+    <script type="text/javascript">
+      var elem = document.documentElement;
+      function openFullscreen() {
+        if (
+          window.fullScreen ||
+          (window.innerWidth == screen.width &&
+            window.innerHeight == screen.height)
+        ) {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          }
+        } else {
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.mozRequestFullScreen) {
+            /* Firefox */
+            elem.mozRequestFullScreen();
+          } else if (elem.webkitRequestFullscreen) {
+            /* Chrome, Safari & Opera */
+            elem.webkitRequestFullscreen();
+          } else if (elem.msRequestFullscreen) {
+            /* IE/Edge */
+            elem.msRequestFullscreen();
+          }
+        }
+      }
+
+      const deg = 6;
+      const hr = document.querySelector("#hr");
+      const mn = document.querySelector("#mn");
+      const ss = document.querySelector("#sc");
+
+      setInterval(() => {
+        let day = new Date();
+        let hh = day.getHours() * 30;
+        let mm = day.getMinutes() * deg;
+        let sc = day.getSeconds() * deg;
+        hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
+        mn.style.transform = `rotateZ(${mm}deg)`;
+        ss.style.transform = `rotateZ(${sc}deg)`;
+      });
+    </script>
+  </body>
+  <!-- developed by Sathizh.M -->
+</html>
